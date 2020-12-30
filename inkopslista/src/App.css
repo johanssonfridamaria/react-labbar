@@ -5,11 +5,15 @@
 }
 html, body{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.4rem;
+  line-height: 1.5;
 }
-.container{
+.card{
   width: 80%;
-  margin: auto;
+  margin: 0 auto;
+  max-width: 30rem;
+  background-color: pink;
+  border-radius: 1rem;
+  padding: 2rem 3rem;
 }
 .app{
   min-height: 100vh;
@@ -17,4 +21,11 @@ html, body{
   background-image: url('./assets/images/PngItem_2968725.png');
   background-repeat: repeat;
   background-size: 4rem 4rem;
+  padding: 3rem 0;
+}
+/* .addProduct{
+
+} */
+.delete-btn{
+  background-color: rgb(207, 57, 57);
 }
