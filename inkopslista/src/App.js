@@ -1,5 +1,5 @@
-import {useState} from 'react'
-import {v4 as uuidv4 } from 'uuid'
+import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import './App.css';
 import AddProduct from './components/AddProduct';
 import BoughtProducts from './components/BoughtProducts';
@@ -7,7 +7,7 @@ import ShoppingList from './components/ShoppingList';
 
 function App() {
 
-  const [products, setproducts] = useState([
+  const [products, setProducts] = useState([
     {
       id: uuidv4(),
       name: 'Chips',
@@ -35,7 +35,13 @@ function App() {
     },
   ])
 
-  const setProductsCallback = () => {
+  const setProductsCallback = productName => {
+    setProducts(prevProducts => {
+      return [
+        { id: uuidv4(), name: productName, completed: false },
+        ...prevProducts
+      ]
+    })
 
   }
 
@@ -45,8 +51,8 @@ function App() {
       <div className="card">
         <h1>Inköpslista</h1>
         <AddProduct setProductsCallback={setProductsCallback} />
-        <ShoppingList products={products}/>
-        <BoughtProducts products={products}/>
+        <ShoppingList products={products} />
+        <BoughtProducts products={products} />
       </div>
     </div>
   );
