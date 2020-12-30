@@ -3,7 +3,8 @@ import React from 'react'
 const ProductEdit = () => {
   return (
     <div>
-      Edit
+      <input type="text"/>
+      <button>OK</button>
     </div>
   )
 }
