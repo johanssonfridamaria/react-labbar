@@ -52,6 +52,14 @@ h1,h2{
   background-color: rgb(57, 135, 207);
   color: white;
 }
+.btn-not-done{
+  background-color: rgb(247, 157, 172);
+  color: white;
+}
+.btn-done{
+  background-color: rgb(247, 157, 172);
+  color: green;
+}
 .title{
   width: 10rem;
   border-bottom: 0.05rem solid black;
