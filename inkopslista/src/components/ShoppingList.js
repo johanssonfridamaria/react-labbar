@@ -1,12 +1,11 @@
 import React from 'react'
 import Product from './Product/Product'
 
-const ShoppingList = ({products}) => {
+const ShoppingList = ({products, removeProductCallback,editProductCallback, toogleCompleteCallback}) => {
   return (
-    <div className="list">
-      <h2>Att köpa:</h2>
+    <div>
       {
-        products.map(product => <Product product={product} key={product.id} /> )
+        products.map(product => <Product product={product} key={product.id} removeProductCallback={removeProductCallback} editProductCallback={editProductCallback} toogleCompleteCallback={toogleCompleteCallback}/> )
       }
     </div>
   )
