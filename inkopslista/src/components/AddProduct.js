@@ -5,14 +5,11 @@ const AddProduct = ({setProductsCallback}) => {
   const productName = useRef();
   
   const addProduct = (e) => {
-    console.log(productName.current.value)
     e.preventDefault();
 
-    if(productName.current.value !== '')
+    if(productName.current.value === '')
     return
-
     setProductsCallback(productName.current.value)
-
     productName.current.value = '';
   } 
   
