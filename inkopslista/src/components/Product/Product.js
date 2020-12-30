@@ -5,7 +5,7 @@ import ProductEdit from './ProductEdit'
 const Product = ({ product }) => {
   return (
     <div className="product">
-      <button>Done</button>
+      <button><i class="fas fa-check"></i></button>
       <ProductName product={product} />
       <ProductEdit product={product} />
       <div>
