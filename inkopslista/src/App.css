@@ -1,0 +1,20 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.4rem;
+}
+.container{
+  width: 80%;
+  margin: auto;
+}
+.app{
+  min-height: 100vh;
+  background-color: pink;
+  background-image: url('./assets/images/PngItem_2968725.png');
+  background-repeat: repeat;
+  background-size: 4rem 4rem;
+}
