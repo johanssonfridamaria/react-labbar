@@ -42,7 +42,7 @@ function App() {
         <h1>Inköpslista</h1>
         <AddProduct />
         <ShoppingList products={products}/>
-        <BoughtProducts />
+        <BoughtProducts products={products}/>
       </div>
     </div>
   );
