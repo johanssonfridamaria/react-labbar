@@ -1,10 +1,25 @@
-import React, {useState} from 'react'
+import React, {useRef} from 'react'
 
-const AddProduct = () => {
+const AddProduct = ({setProductsCallback}) => {
+  
+  const productName = useRef();
+  
+  const addProduct = (e) => {
+    e.preventDefault();
+
+    if(productName !== '')
+    return
+
+    setProductsCallback(productName.current.value)
+
+    productName.current.value = '';
+  } 
+  
+  
   return (
     <div className="add-product">
-      <input type="text"/>
-      <button>Lägg till</button>
+      <input type="text" ref={productName}/>
+      <button onClick={addProduct}>Lägg till</button>
     </div>
   )
 }
