@@ -35,12 +35,16 @@ function App() {
     },
   ])
 
+  const setProductsCallback = () => {
+
+  }
+
 
   return (
     <div className="app">
       <div className="card">
         <h1>Inköpslista</h1>
-        <AddProduct />
+        <AddProduct setProductsCallback={setProductsCallback} />
         <ShoppingList products={products}/>
         <BoughtProducts products={products}/>
       </div>
