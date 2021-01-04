@@ -15,9 +15,9 @@ const ProductEdit = ({product, setEdit, editProductCallback}) => {
   }
 
   return (
-    <div>
+    <div className="edit-product">
       <input type="text" ref={input}/>
-      <button onClick={editProduct}>OK</button>
+      <button className="btn-product btn-ok" onClick={editProduct}>OK</button>
     </div>
   )
 }
