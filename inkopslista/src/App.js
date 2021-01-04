@@ -85,7 +85,7 @@ function App() {
           <ShoppingList products={products.filter(product => !product.completed)} removeProductCallback={removeProductCallback} editProductCallback={editProductCallback} toogleCompleteCallback={toogleCompleteCallback} />
         </div>
         <div className="list">
-          <h2>I varukorgen</h2>
+          <h2>I varukorgen:</h2>
           <ShoppingList products={products.filter(product => product.completed)} removeProductCallback={removeProductCallback} editProductCallback={editProductCallback} toogleCompleteCallback={toogleCompleteCallback} />
         </div>
       </div>
