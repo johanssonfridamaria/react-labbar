@@ -9,27 +9,32 @@ function App() {
   const [products, setProducts] = useState([
     {
       id: uuidv4(),
-      name: 'Chips',
+      name: 'Spagetti',
       completed: false,
     },
     {
       id: uuidv4(),
-      name: 'Smördeg',
+      name: 'Belugalinser',
       completed: false,
     },
     {
       id: uuidv4(),
-      name: 'Pesto',
+      name: 'Morötter',
       completed: false,
     },
     {
       id: uuidv4(),
-      name: 'Fläskfilé',
+      name: 'Tomatsås',
       completed: false,
     },
     {
       id: uuidv4(),
-      name: 'Bearnaise',
+      name: 'Gullök',
+      completed: true,
+    },
+    {
+      id: uuidv4(),
+      name: 'Basilika',
       completed: false,
     },
   ])
@@ -73,7 +78,7 @@ function App() {
       }
       return product
     })
-    setProducts(newProducts)
+    setProducts(newProducts);
   }
 
   // const setDoneProducts = 
