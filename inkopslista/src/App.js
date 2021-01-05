@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import './App.css';
 import AddProduct from './components/AddProduct';
@@ -34,16 +34,19 @@ function App() {
     },
   ])
 
-  // const [doneProducts, setDoneProducts] = useState([])
+  useEffect(()=>{
+    const storedProducts = JSON.parse(localStorage.getItem('products'))
+    if(storedProducts){
+      setProducts(storedProducts);
+    }
+  },[])
 
-  const setProductsCallback = productName => {
-    console.log(productName)
-    setProducts(prevProducts => {
-      return [
-        { id: uuidv4(), name: productName, completed: false },
-        ...prevProducts
-      ]
-    })
+  useEffect(()=>{
+    localStorage.setItem('products', JSON.stringify(products))
+  },[products])
+
+  const addProductsCallback = productName => {
+    setProducts([...products,{ id: uuidv4(), name: productName, completed: false }])
   }
 
   const removeProductCallback = id => {
@@ -79,7 +82,7 @@ function App() {
     <div className="app">
       <div className="card">
         <h1>Inköpslista</h1>
-        <AddProduct setProductsCallback={setProductsCallback} />
+        <AddProduct addProductsCallback={addProductsCallback} />
         <div className="list">
           <h2>Att köpa:</h2>
           <ShoppingList products={products.filter(product => !product.completed)} removeProductCallback={removeProductCallback} editProductCallback={editProductCallback} toogleCompleteCallback={toogleCompleteCallback} />
