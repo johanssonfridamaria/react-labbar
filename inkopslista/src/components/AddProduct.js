@@ -1,6 +1,6 @@
 import React, {useRef} from 'react'
 
-const AddProduct = ({setProductsCallback}) => {
+const AddProduct = ({addProductsCallback}) => {
   
   const productName = useRef();
   
@@ -9,7 +9,7 @@ const AddProduct = ({setProductsCallback}) => {
 
     if(productName.current.value === '')
     return
-    setProductsCallback(productName.current.value)
+    addProductsCallback(productName.current.value)
     productName.current.value = '';
   } 
   
