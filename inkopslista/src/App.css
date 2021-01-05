@@ -55,11 +55,11 @@ h2 {
   font-size: 0.8rem;
   text-transform: uppercase;
   color: #bb5163;
-  background-color: #faaeba;
+  background-color: #f79dac;
   outline: none;
 }
 .add-product button:hover {
-  background-color: #f79ca9;
+  background-color:#fa99aa;
 }
 
 /* Product comp */
