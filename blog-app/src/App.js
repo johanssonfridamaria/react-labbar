@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { Container } from '@material-ui/core';
+import { Container, Box } from '@material-ui/core';
 import CreatePost from './views/CreatePost';
 import Posts from './views/Posts';
 import axios from 'axios';
@@ -16,7 +16,6 @@ function App() {
   const getPosts = async () => {
     const response = await axios.get(url)
     setposts(response.data)
-    console.log(response.data)
   }
 
   useEffect(() => {
@@ -27,13 +26,14 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-
-      <Container fixed mt="2rem">
-        <Switch>
-          <Route exact path="/" render={() => <Posts posts={posts} />} />
-          <Route path="/create" render={() => <CreatePost />} />
-        </Switch>
-      </Container>
+      <Box mt={4} >
+        <Container fixed>
+          <Switch>
+            <Route exact path="/" render={() => <Posts posts={posts} />} />
+            <Route path="/create" render={() => <CreatePost />} />
+          </Switch>
+        </Container>
+      </Box>
     </BrowserRouter>
   );
 }
