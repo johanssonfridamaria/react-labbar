@@ -1,9 +1,12 @@
-import React from 'react'
+import { Typography } from '@material-ui/core';
+import React from 'react';
+import AddPost from '../components/AddPost'
 
 const CreatePost = () => {
   return (
     <div>
-      <h1>Create</h1>
+      <Typography variant="h4" gutterBottom>Create Post</Typography>
+      <AddPost />
     </div>
   )
 }
