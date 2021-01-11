@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles'
-import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core'
+import { Card, CardActions, CardContent, Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -9,8 +10,11 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: 'column',
     justifyContent: "space-between"
-
   },
+  link: {
+    textDecoration: 'none',
+    color: '#333',
+  }
 
 })
 
@@ -32,7 +36,8 @@ const PostCard = ({ post }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button>Read more</Button>
+
+        <Link to={`/post/${post.id}`} className={classes.link} variant="body2">Read more</Link>
       </CardActions>
     </Card>
   )
