@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Input, InputLabel } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-// import theme from '../theme';
 
 const useStyles = makeStyles({
   addForm: {
