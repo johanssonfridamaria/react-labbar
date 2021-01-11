@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
-import { Button, Input, InputLabel } from '@material-ui/core'
+import React, { useState} from 'react';
+import { useHistory } from 'react-router-dom';
+import { Button, Input, InputLabel } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+
 
 const useStyles = makeStyles({
   addForm: {
@@ -17,20 +19,32 @@ const useStyles = makeStyles({
   buttonStyle: {
     background: '#333',
     color: '#fff',
+    '&:hover':{
+      background:'#555'
+    }
   }
 });
 
-const AddPost = () => {
+const AddPost = ({createPost}) => {
 
+  const history = useHistory();
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
   const classes = useStyles();
 
+  const onSub = (e) => {
+    e.preventDefault();
+    createPost(title, body);
+    setBody('');
+    setTitle('');
+    history.push('/');
+  }
+
   return (
-    <form className={classes.addForm}>
+    <form className={classes.addForm} onSubmit={onSub} >
       <div>
-        <InputLabel className={classes.labelStyle} htmlFor="title" margin="normal">Title</InputLabel>
+        <InputLabel className={classes.labelStyle} htmlFor="title">Title</InputLabel>
         <Input className={classes.inputStyle} id="title" value={title} onChange={e => setTitle(e.target.value)} fullWidth />
       </div>
       <div>
@@ -38,7 +52,7 @@ const AddPost = () => {
         <Input className={classes.inputStyle} id="body" value={body} onChange={e => setBody(e.target.value)} fullWidth />
       </div>
       <div>
-        <Button className={classes.buttonStyle}>Add</Button>
+        <Button variant="contained" type="submit" className={classes.buttonStyle}>Add</Button>
       </div>
     </form>
   )
