@@ -5,8 +5,13 @@ import { Button, Card, CardActions, CardContent, Typography } from '@material-ui
 const useStyles = makeStyles({
   root: {
     minWidth: 250,
-    // height: -webkit-fill-available
+    height: "100%",
+    display: "flex",
+    flexDirection: 'column',
+    justifyContent: "space-between"
+
   },
+
 })
 
 const PostCard = ({ post }) => {
