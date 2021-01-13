@@ -9,16 +9,16 @@ const PostDetail = ({ match }) => {
 
   const url = 'https://jsonplaceholder.typicode.com/posts/';
 
-  const getPost = async () => {
-    setLoading(true)
-    const res = await axios.get(url + `${match.params.id}`)
-    setPost(res.data)
-    setLoading(false)
-  }
-
   useEffect(() => {
+    const getPost = async () => {
+      setLoading(true)
+      const res = await axios.get(url + `${match.params.id}`)
+      setPost(res.data)
+      setLoading(false)
+    }
     getPost()
-  },[])
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (!loading) {
     return (
