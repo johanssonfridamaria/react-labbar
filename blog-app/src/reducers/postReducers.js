@@ -1,51 +1,36 @@
-// import actiontypes from './actiontypes';
-// // import axios from 'axios';
-
-// export const postReducers = (state, action) => {
-//   console.log('action' + action);
-//   console.log('state' + state)
-
-//   switch (action.type) {
-
-//     case 'unload':
-//       return initialState;
-//     case actiontypes().posts.getPosts:
-//       return {
-//         data: action.payload
-//       }
-//     case actiontypes().posts.createPost:
-//       return [{
-//         id: Date.now().toString(),
-//         title,
-//         body
-//       }, ...state]
-//     default:
-//       return state
+import actiontypes from './actiontypes';
+import axios from 'axios';
 
 
+export const postReducers = (state, action) => {
 
+  const { type, payload } = action;
+  const { CREATE_POST, SET_POST , GET_ONE_POST, GET_POSTS } = actiontypes().posts;
 
-//     // actiontypes().posts.getPosts:
-//     // async ({ state }) => {
-//     //   const response = await axios.get('https://jsonplaceholder.typicode.com/posts/')
-//     //   return response.data
-//     // }
+  switch (type) {
+    case GET_POSTS: {
+      console.log('payload',payload)
+      const {posts} = payload;
+      console.log('posts', posts);
+      return posts
+    }
+    case SET_POST: {
+      const { posts } = payload;
+      return posts
+    }
 
-//     // case actiontypes().posts.getOnePost:
+    case CREATE_POST: {
+      const { post } = payload;
+      console.log('post', post)
+      return [
+        {
+          id: Date.now().toString(),
+          ...post
+        }, ...state]
+    }
+    default:
+    return state
 
-//     //   const url = 'https://jsonplaceholder.typicode.com/posts/';
-
-//     //   async () => {
-//     //     // setLoading(true)
-//     //     const res = await axios.get(url + `${match.params.id}`)
-//     //     setPost(res.data)
-//     //     setLoading(false)
-//     //   }
-
-
-
-
-//   }
-// }
-
+  }
+}
 

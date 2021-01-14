@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Button, Input, InputLabel } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { PostsContext } from '../contexts/PostsContext'
+import actiontypes from '../reducers/actiontypes';
 
 
 const useStyles = makeStyles({
@@ -28,7 +29,8 @@ const useStyles = makeStyles({
 
 const AddPost = () => {
 
-  const { createPost } = useContext(PostsContext);
+  const { dispatch } = useContext(PostsContext);
+  // const { createPost } = useContext(PostsContext);
 
   const history = useHistory();
   const [title, setTitle] = useState('');
@@ -38,7 +40,11 @@ const AddPost = () => {
 
   const onSub = (e) => {
     e.preventDefault();
-    createPost(title, body);
+    // createPost(title, body);
+    dispatch({
+      type: actiontypes().posts.createPost,
+      payload: {title, body}
+    })
     setBody('');
     setTitle('');
     history.push('/');

@@ -1,12 +1,13 @@
-// const actiontypes = () => {
-//   return {
-//     posts: {
-//       getPosts: 'GET_POSTS',
-//       createPost: 'CREATE_POST',
-//       getOnePost: 'GET_ONE_POST',
-//     }
-//   }
+const actiontypes = () => {
+  return {
+    posts: {
+      getPosts: 'GET_POSTS',
+      setPosts: 'SET_POSTS',
+      createPost: 'CREATE_POST',
+      getOnePost: 'GET_ONE_POST',
+    }
+  }
 
-// }
+}
 
-// export default actiontypes;
+export default actiontypes;

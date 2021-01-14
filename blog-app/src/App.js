@@ -8,23 +8,37 @@ import Posts from './views/Posts';
 import PostDetail from './views/PostDetail';
 import { PostsContext } from './contexts/PostsContext';
 import axios from 'axios';
+import actiontypes from './reducers/actiontypes';
 
 
 function App() {
 
-  const { posts, setPosts } = useContext(PostsContext);
+  const { posts, dispatch } = useContext(PostsContext);
+  // const { posts, setPosts } = useContext(PostsContext);
+
   const url = 'https://jsonplaceholder.typicode.com/posts/';
 
+  const getPosts = async () => {
+    const response = await axios.get(url);
+    console.log('response', response)
+    const posts = response.data;
+    console.log('posts', posts)
+    // setPosts(data);
+    dispatch({
+      type: actiontypes().posts.getPosts,
+      payload: { posts: posts }
+    })
+  };
 
   useEffect(() => {
-    const getPosts = async () => {
-      const response = await axios.get(url);
-      setPosts(response.data);
-    };
     getPosts();
     const storedPosts = JSON.parse(localStorage.getItem('posts'));
     if (storedPosts) {
-      setPosts(storedPosts)
+      // posts = storedPosts;
+      dispatch({
+        type: actiontypes().posts.setPosts,
+        payload: { storedPosts }
+      })
     };
   }, []);
 
