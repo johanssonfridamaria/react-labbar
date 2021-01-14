@@ -4,7 +4,7 @@ import actiontypes from './actiontypes';
 export const postReducers = (state, action) => {
 
   const { type, payload } = action;
-  const { createPost, setPosts , getOnePost, getPosts } = actiontypes().posts;
+  const { createPost, setPosts, getPosts } = actiontypes().posts;
 
   switch (type) {
     case getPosts: {
@@ -15,7 +15,6 @@ export const postReducers = (state, action) => {
       const { posts } = payload;
       return posts
     }
-
     case createPost: {
       console.log(payload)
       console.log(state)
@@ -26,7 +25,8 @@ export const postReducers = (state, action) => {
           id: Date.now().toString(),
           ...post
         }, ...state]
-    }
+      }
+ 
     default:
     return state
 

@@ -9,6 +9,7 @@ import PostDetail from './views/PostDetail';
 import { PostsContext } from './contexts/PostsContext';
 import axios from 'axios';
 import actiontypes from './reducers/actiontypes';
+import PostContextProvider from './contexts/PostContext';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
 
   const url = 'https://jsonplaceholder.typicode.com/posts/';
 
-  const getPosts = useCallback( async () => {
+  const getPosts = useCallback(async () => {
     const response = await axios.get(url);
     const posts = response.data;
     // setPosts(data);
@@ -29,10 +30,10 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-      getPosts();
-    },[getPosts]);
-  
-    
+    getPosts();
+  }, [getPosts]);
+
+
   useEffect(() => {
     localStorage.setItem('posts', JSON.stringify(posts));
   }, [posts]);
@@ -42,13 +43,15 @@ function App() {
       <Navbar />
       <Box mt={4} >
         <Container fixed>
-          <Switch>
-            <Route exact path="/">
-              {posts ? <Posts /> : <h1>No posts loaded</h1>}
-            </Route>
-            <Route exact path="/create" component={CreatePost} />
-            <Route exact path="/post/:id" component={PostDetail} />
-          </Switch>
+          <PostContextProvider>
+            <Switch>
+              <Route exact path="/">
+                {posts ? <Posts /> : <h1>No posts loaded</h1>}
+              </Route>
+              <Route exact path="/create" component={CreatePost} />
+              <Route exact path="/post/:id" component={PostDetail} />
+            </Switch>
+          </PostContextProvider>
         </Container>
       </Box>
     </BrowserRouter>

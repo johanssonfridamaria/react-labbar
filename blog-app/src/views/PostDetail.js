@@ -1,24 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Box, Typography } from '@material-ui/core';
+import { PostContext } from '../contexts/PostContext';
+import actiontypes from '../reducers/actiontypes';
 
 const PostDetail = ({ match }) => {
 
-  const [post, setPost] = useState({});
+  const { post, dispatch } = useContext(PostContext);
   const [loading, setLoading] = useState({});
 
   const url = 'https://jsonplaceholder.typicode.com/posts/';
 
   useEffect(() => {
     const getPost = async () => {
+      // dispatch({
+      //   type: actiontypes().posts.getPost,
+      //   loading: true
+      // })
       setLoading(true)
       const res = await axios.get(url + `${match.params.id}`)
-      setPost(res.data)
+      const post = res.data
+      console.log(res.data)
+      dispatch({
+        type: actiontypes().posts.getOneSuccess,
+        payload: { post: post },
+        // loading: false
+      })
+
+      // setPost(res.data)
       setLoading(false)
     }
     getPost()
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [dispatch, match.params.id])
 
   if (!loading) {
     return (

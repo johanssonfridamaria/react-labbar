@@ -5,6 +5,7 @@ const actiontypes = () => {
       setPosts: 'SET_POSTS',
       createPost: 'CREATE_POST',
       getOnePost: 'GET_ONE_POST',
+      getOneSuccess: 'GET_ONE_SUCCESS',
     }
   }
 
