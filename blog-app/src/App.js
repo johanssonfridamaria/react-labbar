@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useCallback } from 'react';
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
@@ -18,30 +18,21 @@ function App() {
 
   const url = 'https://jsonplaceholder.typicode.com/posts/';
 
-  const getPosts = async () => {
+  const getPosts = useCallback( async () => {
     const response = await axios.get(url);
-    console.log('response', response)
     const posts = response.data;
-    console.log('posts', posts)
     // setPosts(data);
     dispatch({
       type: actiontypes().posts.getPosts,
       payload: { posts: posts }
     })
-  };
+  }, [dispatch]);
 
   useEffect(() => {
-    getPosts();
-    const storedPosts = JSON.parse(localStorage.getItem('posts'));
-    if (storedPosts) {
-      // posts = storedPosts;
-      dispatch({
-        type: actiontypes().posts.setPosts,
-        payload: { storedPosts }
-      })
-    };
-  }, []);
-
+      getPosts();
+    },[getPosts]);
+  
+    
   useEffect(() => {
     localStorage.setItem('posts', JSON.stringify(posts));
   }, [posts]);
@@ -52,7 +43,9 @@ function App() {
       <Box mt={4} >
         <Container fixed>
           <Switch>
-            <Route exact path="/" component={Posts} />
+            <Route exact path="/">
+              {posts ? <Posts /> : <h1>No posts loaded</h1>}
+            </Route>
             <Route exact path="/create" component={CreatePost} />
             <Route exact path="/post/:id" component={PostDetail} />
           </Switch>

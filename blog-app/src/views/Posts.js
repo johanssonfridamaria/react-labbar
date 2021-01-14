@@ -11,7 +11,7 @@ const Posts = () => {
     <Grid container spacing={4}>
       {
         posts.map(post => (
-          <Grid item xs={12} sm={6}>
+          <Grid key={post.id} item xs={12} sm={6}>
             <PostCard post={post} key={post.id} />
           </Grid>
         ))

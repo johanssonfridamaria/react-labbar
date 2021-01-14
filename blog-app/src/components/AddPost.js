@@ -45,6 +45,7 @@ const AddPost = () => {
       type: actiontypes().posts.createPost,
       payload: {title, body}
     })
+    
     setBody('');
     setTitle('');
     history.push('/');

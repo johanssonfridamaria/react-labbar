@@ -1,26 +1,25 @@
 import actiontypes from './actiontypes';
-import axios from 'axios';
 
 
 export const postReducers = (state, action) => {
 
   const { type, payload } = action;
-  const { CREATE_POST, SET_POST , GET_ONE_POST, GET_POSTS } = actiontypes().posts;
+  const { createPost, setPosts , getOnePost, getPosts } = actiontypes().posts;
 
   switch (type) {
-    case GET_POSTS: {
-      console.log('payload',payload)
+    case getPosts: {
       const {posts} = payload;
-      console.log('posts', posts);
       return posts
     }
-    case SET_POST: {
+    case setPosts: {
       const { posts } = payload;
       return posts
     }
 
-    case CREATE_POST: {
-      const { post } = payload;
+    case createPost: {
+      console.log(payload)
+      console.log(state)
+      const post = payload;
       console.log('post', post)
       return [
         {
