@@ -19,10 +19,8 @@ export const onePostReducers = (state, action) => {
       const { post } = payload;
       console.log(post)
       // const _loading = loading;
-      return {
-        post,
+      return post
         // _loading
-      }
     }
 
 
